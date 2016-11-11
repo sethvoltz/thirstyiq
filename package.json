@@ -1,0 +1,16 @@
+{
+  "name": "thirsty",
+  "version": "1.0.0",
+  "description": "ThirstyIQ Serverless",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Seth Voltz",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "node-fetch": "^1.6.3",
+    "slack-node": "^0.1.8"
+  }
+}
