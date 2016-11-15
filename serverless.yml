@@ -87,6 +87,36 @@ resources:
           ReadCapacityUnits: 5
           WriteCapacityUnits: 5
 
+    usersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: thirstyiq-users
+        KeySchema:
+          - AttributeName: organization
+            KeyType: HASH
+          - AttributeName: id
+            KeyType: RANGE
+        AttributeDefinitions:
+          - AttributeName: organization
+            AttributeType: S
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: name
+            AttributeType: S
+        GlobalSecondaryIndexes:
+          - IndexName: name-index
+            KeySchema:
+              - AttributeName: name
+                KeyType: HASH
+            Projection:
+              ProjectionType: KEYS_ONLY
+            ProvisionedThroughput:
+              ReadCapacityUnits: 5
+              WriteCapacityUnits: 5
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+
     slackTeamsTable:
       Type: AWS::DynamoDB::Table
       Properties:
