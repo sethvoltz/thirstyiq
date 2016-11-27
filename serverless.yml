@@ -18,6 +18,7 @@ provider:
   runtime: nodejs4.3
   # stage: dev
   region: us-west-2
+  cfLogs: true
 
 # you can add statements to the Lambda function's IAM Role here
   iamRoleStatements:
@@ -63,6 +64,10 @@ functions:
     handler: index.refresh
     events:
       - sns: refresh-users
+      - schedule: cron(0 4 * * ? *)
+
+# AWS Cron Expressions:
+# https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
