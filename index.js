@@ -9,3 +9,4 @@ var service = require('./lib');
 // Export handlers
 exports.slash = service.slash.handler;
 exports.authorization = service.authorization.handler;
+exports.refresh = service.refresh.handler;

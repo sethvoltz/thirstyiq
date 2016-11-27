@@ -25,6 +25,10 @@ provider:
       Action:
         - "dynamodb:*"
       Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/*"
+    - Effect: "Allow"
+      Action:
+        - "SNS:Publish"
+      Resource: "arn:aws:sns:${self:provider.region}:*:refresh-users"
 #    - Effect: "Allow"
 #      Action:
 #        - "s3:ListBucket"
@@ -54,6 +58,11 @@ functions:
     handler: index.authorization
     events:
       - http: GET callback
+
+  refresh:
+    handler: index.refresh
+    events:
+      - sns: refresh-users
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
