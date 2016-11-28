@@ -89,15 +89,13 @@ resources:
             AttributeType: S
           - AttributeName: id
             AttributeType: S
-          - AttributeName: name
-            AttributeType: S
         GlobalSecondaryIndexes:
-          - IndexName: name-index
+          - IndexName: organization-index
             KeySchema:
-              - AttributeName: name
+              - AttributeName: organization
                 KeyType: HASH
             Projection:
-              ProjectionType: KEYS_ONLY
+              ProjectionType: ALL
             ProvisionedThroughput:
               ReadCapacityUnits: 5
               WriteCapacityUnits: 5
